@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mealsapp/models/meal.dart';
-import 'package:mealsapp/screens/meal_detail_screen.dart';
+
+import '../screens/meal_detail_screen.dart';
+import '../models/meal.dart';
 
 class MealItem extends StatelessWidget {
   final String id;
@@ -14,9 +15,9 @@ class MealItem extends StatelessWidget {
     @required this.id,
     @required this.title,
     @required this.imageUrl,
-    @required this.duration,
-    @required this.complexity,
     @required this.affordability,
+    @required this.complexity,
+    @required this.duration,
   });
 
   String get complexityText {
@@ -40,11 +41,11 @@ class MealItem extends StatelessWidget {
       case Affordability.Affordable:
         return 'Affordable';
         break;
-      case Affordability.Luxurious:
-        return 'Expensive';
-        break;
       case Affordability.Pricey:
         return 'Pricey';
+        break;
+      case Affordability.Luxurious:
+        return 'Expensive';
         break;
       default:
         return 'Unknown';
@@ -104,7 +105,7 @@ class MealItem extends StatelessWidget {
                       overflow: TextOverflow.fade,
                     ),
                   ),
-                ),
+                )
               ],
             ),
             Padding(
@@ -114,22 +115,34 @@ class MealItem extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.schedule),
-                      SizedBox(width: 6),
+                      Icon(
+                        Icons.schedule,
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
                       Text('$duration min'),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.work),
-                      SizedBox(width: 6),
+                      Icon(
+                        Icons.work,
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
                       Text(complexityText),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.attach_money),
-                      SizedBox(width: 6),
+                      Icon(
+                        Icons.attach_money,
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
                       Text(affordabilityText),
                     ],
                   ),

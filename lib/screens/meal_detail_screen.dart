@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mealsapp/dummy_data.dart';
+
+import '../dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
 
-  Widget _buildSectionTitle(BuildContext context, String text) {
+  Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
-      margin: EdgeInsets.symmetric(
-        vertical: 10,
-      ),
+      margin: EdgeInsets.symmetric(vertical: 10),
       child: Text(
         text,
         style: Theme.of(context).textTheme.title,
@@ -16,18 +15,16 @@ class MealDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildContainer(Widget child) {
+  Widget buildContainer(Widget child) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(
-          color: Colors.grey,
-        ),
+        border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),
       ),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
-      height: 200,
+      height: 150,
       width: 300,
       child: child,
     );
@@ -52,40 +49,37 @@ class MealDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            _buildSectionTitle(context, 'Ingredients'),
-            _buildContainer(
+            buildSectionTitle(context, 'Ingredients'),
+            buildContainer(
               ListView.builder(
                 itemBuilder: (ctx, index) => Card(
-                  color: Theme.of(context).accentColor,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 10,
+                      color: Theme.of(context).accentColor,
+                      child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 5,
+                            horizontal: 10,
+                          ),
+                          child: Text(selectedMeal.ingredients[index])),
                     ),
-                    child: Text(
-                      selectedMeal.ingredients[index],
-                    ),
-                  ),
-                ),
                 itemCount: selectedMeal.ingredients.length,
               ),
             ),
-            _buildSectionTitle(context, 'Steps'),
-            _buildContainer(
+            buildSectionTitle(context, 'Steps'),
+            buildContainer(
               ListView.builder(
                 itemBuilder: (ctx, index) => Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        child: Text('# ${(index + 1)}'),
-                      ),
-                      title: Text(
-                        selectedMeal.steps[index],
-                      ),
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            child: Text('# ${(index + 1)}'),
+                          ),
+                          title: Text(
+                            selectedMeal.steps[index],
+                          ),
+                        ),
+                        Divider()
+                      ],
                     ),
-                    Divider()
-                  ],
-                ),
                 itemCount: selectedMeal.steps.length,
               ),
             ),

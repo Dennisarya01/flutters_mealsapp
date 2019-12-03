@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FavoriteScreen extends StatelessWidget {
+class FilterScreen extends StatelessWidget {
+  static const routeName = '/filters';
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'The Favorite',
+        'Filters!',
       ),
     );
   }
